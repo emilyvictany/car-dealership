@@ -2,8 +2,8 @@
 
 Team:
 
-* Brian La - service
-* Emily Yim - sales
+* Brian La - Service
+* Emily Yim - Sales
 
 ## Design
 
