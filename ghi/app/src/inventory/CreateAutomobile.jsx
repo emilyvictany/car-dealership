@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react';
 
 function AutomobileForm() {
     const [color, setColor] = useState('');
-    const [year, setYear] = useState(0);
+    const [year, setYear] = useState('');
     const [vin, setVin] = useState('');
     const [models, setModels] = useState([]);
     const [model, setModel] = useState(0); //value should be it's id which is an integer
@@ -62,10 +62,10 @@ function AutomobileForm() {
         // console.log(newAutoResponse.status)
         if (newAutoResponse.ok) {
             setColor('');
-            setYear(0);
+            setYear('');
             setVin('');
             setModel(0);
-            console.log('FORM SUBMITTED:' + newAutoResponse)
+            // console.log('FORM SUBMITTED:' + newAutoResponse)
         }
     }
 

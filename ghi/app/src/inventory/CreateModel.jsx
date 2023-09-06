@@ -1,126 +1,100 @@
 import React, {useEffect, useState } from 'react';
 
 function ModelForm() {
-    console.log('Create a Model Form')
-    // const [bins, setBins] = useState([]); // list of bins
-    // const [bin, setBin] = useState(''); // should be an href
-    // const [manufacturer, setManufacturer] = useState('');
-    // const [modelName, setModelName] = useState('');
-    // const [color, setColor] = useState('');
-    // const [pictureUrl, setPictureUrl] = useState('');
+    const [name, setName] = useState('');
+    const [pictureUrl, setPictureUrl] = useState('');
+    const [manufacturers, setManufacturers] = useState([]);
+    const [manufacturer, setManufacturer] = useState(0); //value should be it's id which is an integer
 
-    // const fetchData = async () => {
-    //     const url = 'http://localhost:8100/api/bins/';
-    //     const response = await fetch(url);
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setBins(data.bins);
-    //     //   console.log(bins)
-    //     }
-    //   }
+    const fetchData = async () => {
+        const url = 'http://localhost:8100/api/manufacturers/';
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          setManufacturers(data.manufacturers);
+        }
+    }
 
-    //   useEffect(() => {
-    //     fetchData();
-    //   }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    //   const handleChangeBin = (event) => {
-    //     const value = event.target.value;
-    //     setBin(value);
-    //   }
+    const handleChangeName = (event) => {
+        const value = event.target.value;
+        setName(value);
+    }
 
-    //   const handleChangeManufacturer = (event) => {
-    //     const value = event.target.value;
-    //     setManufacturer(value);
-    //   }
+    const handleChangePictureUrl = (event) => {
+        const value = event.target.value;
+        setPictureUrl(value);
+    }
 
-    //   const handleChangeModelName = (event) => {
-    //     const value = event.target.value;
-    //     setModelName(value);
-    //   }
+    const handleChangeManufacturer = (event) => {
+        const value = event.target.value;
+        setManufacturer(value);
+    }
 
-    //   const handleChangeColor = (event) => {
-    //     const value = event.target.value;
-    //     setColor(value);
-    //   }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = {};
+        data.name = name;
+        data.picture_url = pictureUrl;
+        data.manufacturer_id = manufacturer;
+        // console.log(data);
 
-    //   const handleChangePictureUrl = (event) => {
-    //     const value = event.target.value;
-    //     setPictureUrl(value);
-    //   }
+        const modelsUrl = `http://localhost:8100/api/models/`;
+        const fetchOptions = {
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        const modelsResponse = await fetch(modelsUrl, fetchOptions);
+        // console.log(modelsResponse.ok)
+        // console.log(modelsResponse.status)
+        if (modelsResponse.ok) {
+            setName('');
+            setPictureUrl('');
+            setManufacturer(0);
+            // console.log('FORM SUBMITTED:' + modelsResponse)
+        }
+    }
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     const data = {};
-    //     data.manufacturer = manufacturer;
-    //     data.model_name = modelName;
-    //     data.color = color;
-    //     data.picture_url = pictureUrl;
-    //     data.bin = bin;
-    //     // console.log(data);
+    return (
+        <div className="container">
+      <div className="row">
+        <div className="offset-3 col-6">
+          <div className="shadow p-4 mt-4">
+            <h1>Create a vehicle model</h1>
+            <form onSubmit={handleSubmit} id="create-presentation-form">
+                <div className="form-floating mb-3">
+                    <input onChange={handleChangeName} value={name} placeholder="Model Name" required type="text" id="name" name="name" className="form-control"/>
+                    <label htmlFor="name">Model Name</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input onChange={handleChangePictureUrl} value={pictureUrl} placeholder="Picture URL" required type="text" id="picture_url" name="picture_url" className="form-control"/>
+                    <label htmlFor="picture_url">Picture URL</label>
+                </div>
 
-    //     const shoesUrl = `http://localhost:8080/api/shoes/`;
-    //     const fetchOptions = {
-    //         method: 'post',
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     };
-    //     const newShoeResponse = await fetch(shoesUrl, fetchOptions);
-    //     // console.log(newShoeResponse.ok)
-    //     // console.log(newShoeResponse.status)
-    //     if (newShoeResponse.ok) {
-    //         setManufacturer('');
-    //         setModelName('');
-    //         setColor('');
-    //         setPictureUrl('');
-    //         setBin('')
-    //         // console.log('FORM SUBMITTED:' + newShoeResponse)
-    //     }
-    // }
-
-    // console.log("SHOES")
-    // return (
-    //     <div className="container">
-    //   <div className="row">
-    //     <div className="offset-3 col-6">
-    //       <div className="shadow p-4 mt-4">
-    //         <h1>New Shoes</h1>
-    //         <form onSubmit={handleSubmit} id="create-presentation-form">
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeManufacturer} value={manufacturer} placeholder="Manufacturer" required type="text" id="manufacturer" name="manufacturer" className="form-control"/>
-    //                 <label htmlFor="manufacturer">Manufacturer</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeModelName} value={modelName} placeholder="Model name" required type="text" id="model_name" name="model_name" className="form-control"/>
-    //                 <label htmlFor="model_name">Model Name</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeColor} value={color} placeholder="Color" type="text" id="color" name="color" className="form-control"/>
-    //                 <label htmlFor="color">Color</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangePictureUrl} value={pictureUrl} placeholder="Picture URL" required type="text" id="picture_url" name="picture_url" className="form-control"/>
-    //                 <label htmlFor="picture_url">Picture URL</label>
-    //             </div>
-    //             <div className="mb-3">
-    //                 <label htmlFor="bin" className="form-label">Bin</label>
-    //                 <select required onChange={handleChangeBin} value={bin} id="bin" name="bin" className="form-select">
-    //                     <option>Choose a bin</option>
-    //                     {bins.map(bin => {
-    //                         return (
-    //                             <option key={bin.href} value={bin.href}>Bin #{bin.bin_number} in {bin.closet_name}</option>
-    //                         );
-    //                     })}
-    //                 </select>
-    //             </div>
-    //             <button className="btn btn-primary">Create</button>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    // );
+                <div className="mb-3">
+                    <label htmlFor="manufacturer" className="form-label">Manufacturer</label>
+                    <select required onChange={handleChangeManufacturer} value={manufacturer} id="manufacturer_id" name="manufacturer_id" className="form-select">
+                        <option>Choose a manufacturer</option>
+                        {manufacturers.map(manufacturer => {
+                            return (
+                                <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
+                            );
+                        })}
+                    </select>
+                </div>
+                <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    );
 }
 
 export default ModelForm;
