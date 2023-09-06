@@ -14,10 +14,10 @@ function Nav() {
               <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="">Create a Manufacturer</NavLink>
+              <NavLink className="nav-link" to="/manufacturers/create">Create a Manufacturer</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="">Models</NavLink>
+              <NavLink className="nav-link" to="/model/list">Models</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/model/new">Create a Model</NavLink>
