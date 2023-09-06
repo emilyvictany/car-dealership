@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/model/new" element={<ModelForm />} />
           <Route path="/automobiles" element={<AutomobileList />} />
-          <Route path="/automobiles/new" element={<AutomobileForm />} />
+          <Route path="/automobile/new" element={<AutomobileForm />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,126 +1,112 @@
 import React, {useEffect, useState } from 'react';
 
 function AutomobileForm() {
-    console.log('Craete an automobile form')
-    // const [bins, setBins] = useState([]); // list of bins
-    // const [bin, setBin] = useState(''); // should be an href
-    // const [manufacturer, setManufacturer] = useState('');
-    // const [modelName, setModelName] = useState('');
-    // const [color, setColor] = useState('');
-    // const [pictureUrl, setPictureUrl] = useState('');
+    const [color, setColor] = useState('');
+    const [year, setYear] = useState(0);
+    const [vin, setVin] = useState('');
+    const [models, setModels] = useState([]);
+    const [model, setModel] = useState(0); //value should be it's id which is an integer
 
-    // const fetchData = async () => {
-    //     const url = 'http://localhost:8100/api/bins/';
-    //     const response = await fetch(url);
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setBins(data.bins);
-    //     //   console.log(bins)
-    //     }
-    //   }
+    const fetchData = async () => {
+        const url = 'http://localhost:8100/api/models/';
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          setModels(data.models);
+        }
+    }
 
-    //   useEffect(() => {
-    //     fetchData();
-    //   }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    //   const handleChangeBin = (event) => {
-    //     const value = event.target.value;
-    //     setBin(value);
-    //   }
+    const handleChangeColor = (event) => {
+        const value = event.target.value;
+        setColor(value);
+    }
 
-    //   const handleChangeManufacturer = (event) => {
-    //     const value = event.target.value;
-    //     setManufacturer(value);
-    //   }
+    const handleChangeYear = (event) => {
+        const value = event.target.value;
+        setYear(value);
+    }
 
-    //   const handleChangeModelName = (event) => {
-    //     const value = event.target.value;
-    //     setModelName(value);
-    //   }
+    const handleChangeVin = (event) => {
+        const value = event.target.value;
+        setVin(value);
+    }
 
-    //   const handleChangeColor = (event) => {
-    //     const value = event.target.value;
-    //     setColor(value);
-    //   }
+    const handleChangeModel = (event) => {
+        const value = event.target.value;
+        setModel(value);
+    }
 
-    //   const handleChangePictureUrl = (event) => {
-    //     const value = event.target.value;
-    //     setPictureUrl(value);
-    //   }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = {};
+        data.color = color;
+        data.year = year;
+        data.vin = vin;
+        data.model_id = model;
+        // console.log(data);
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     const data = {};
-    //     data.manufacturer = manufacturer;
-    //     data.model_name = modelName;
-    //     data.color = color;
-    //     data.picture_url = pictureUrl;
-    //     data.bin = bin;
-    //     // console.log(data);
+        const autosUrl = `http://localhost:8100/api/automobiles/`;
+        const fetchOptions = {
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        const newAutoResponse = await fetch(autosUrl, fetchOptions);
+        // console.log(newAutoResponse.ok)
+        // console.log(newAutoResponse.status)
+        if (newAutoResponse.ok) {
+            setColor('');
+            setYear(0);
+            setVin('');
+            setModel(0);
+            console.log('FORM SUBMITTED:' + newAutoResponse)
+        }
+    }
 
-    //     const shoesUrl = `http://localhost:8080/api/shoes/`;
-    //     const fetchOptions = {
-    //         method: 'post',
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     };
-    //     const newShoeResponse = await fetch(shoesUrl, fetchOptions);
-    //     // console.log(newShoeResponse.ok)
-    //     // console.log(newShoeResponse.status)
-    //     if (newShoeResponse.ok) {
-    //         setManufacturer('');
-    //         setModelName('');
-    //         setColor('');
-    //         setPictureUrl('');
-    //         setBin('')
-    //         // console.log('FORM SUBMITTED:' + newShoeResponse)
-    //     }
-    // }
+    return (
+        <div className="container">
+      <div className="row">
+        <div className="offset-3 col-6">
+          <div className="shadow p-4 mt-4">
+            <h1>Add an automobile to inventory</h1>
+            <form onSubmit={handleSubmit} id="create-presentation-form">
+                <div className="form-floating mb-3">
+                    <input onChange={handleChangeColor} value={color} placeholder="Color" required type="text" id="color" name="color" className="form-control"/>
+                    <label htmlFor="color">Color</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input onChange={handleChangeYear} value={year} placeholder="Year" required type="text" id="year" name="year" className="form-control"/>
+                    <label htmlFor="year">Year</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input onChange={handleChangeVin} value={vin} placeholder="VIN" required type="text" id="vin" name="vin" className="form-control"/>
+                    <label htmlFor="vin">VIN</label>
+                </div>
 
-    // console.log("SHOES")
-    // return (
-    //     <div className="container">
-    //   <div className="row">
-    //     <div className="offset-3 col-6">
-    //       <div className="shadow p-4 mt-4">
-    //         <h1>New Shoes</h1>
-    //         <form onSubmit={handleSubmit} id="create-presentation-form">
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeManufacturer} value={manufacturer} placeholder="Manufacturer" required type="text" id="manufacturer" name="manufacturer" className="form-control"/>
-    //                 <label htmlFor="manufacturer">Manufacturer</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeModelName} value={modelName} placeholder="Model name" required type="text" id="model_name" name="model_name" className="form-control"/>
-    //                 <label htmlFor="model_name">Model Name</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangeColor} value={color} placeholder="Color" type="text" id="color" name="color" className="form-control"/>
-    //                 <label htmlFor="color">Color</label>
-    //             </div>
-    //             <div className="form-floating mb-3">
-    //                 <input onChange={handleChangePictureUrl} value={pictureUrl} placeholder="Picture URL" required type="text" id="picture_url" name="picture_url" className="form-control"/>
-    //                 <label htmlFor="picture_url">Picture URL</label>
-    //             </div>
-    //             <div className="mb-3">
-    //                 <label htmlFor="bin" className="form-label">Bin</label>
-    //                 <select required onChange={handleChangeBin} value={bin} id="bin" name="bin" className="form-select">
-    //                     <option>Choose a bin</option>
-    //                     {bins.map(bin => {
-    //                         return (
-    //                             <option key={bin.href} value={bin.href}>Bin #{bin.bin_number} in {bin.closet_name}</option>
-    //                         );
-    //                     })}
-    //                 </select>
-    //             </div>
-    //             <button className="btn btn-primary">Create</button>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    // );
+                <div className="mb-3">
+                    <label htmlFor="model" className="form-label">Model</label>
+                    <select required onChange={handleChangeModel} value={model} id="model_id" name="model_id" className="form-select">
+                        <option>Choose a model</option>
+                        {models.map(model => {
+                            return (
+                                <option key={model.id} value={model.id}>{model.name}</option>
+                            );
+                        })}
+                    </select>
+                </div>
+                <button className="btn btn-primary">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    );
 }
 
 export default AutomobileForm;
