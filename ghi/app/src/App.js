@@ -13,6 +13,11 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/manufacturers" element={<ManufacturersList />} />
+          <Route path="/model/new" element={<ModelForm />} />
+          <Route path="/automobiles" element={<AutomobileList />} />
+          <Route path="/automobiles/new" element={<AutomobileForm />} />
+
         </Routes>
       </div>
     </BrowserRouter>
