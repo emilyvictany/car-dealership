@@ -6,6 +6,12 @@ import json
 from common.json import ModelEncoder
 from .models import Technician, Appointment, AutomobileVO
 # Create your views here.
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = [
+        "vin",
+        "sold"
+    ]
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -26,6 +32,16 @@ class AppointmentEncoder(ModelEncoder):
         "technician"
     ]
     encoders = {"technician" : TechnicianEncoder()}
+
+@require_http_methods(["GET"])
+def api_automobileVO(request):
+    if request.method == "GET":
+        autos = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"automobiles" : autos},
+            encoder=AutomobileVOEncoder
+        )
+
 
 @require_http_methods(["GET", "POST", "DELETE"])
 def api_technicians(request, technician_id=None):

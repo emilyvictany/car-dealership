@@ -20,13 +20,3 @@ class Appointment(models.Model):
         related_name = "appointment",
         on_delete=models.CASCADE
     )
-
-    # def canceled(self):
-    #     status = Appointment.objects.get(status="canceled")
-    #     self.status = status
-    #     self.save()
-
-    # def finished(self):
-    #     status = Appointment.objects.get(status="finished")
-    #     self.status = status
-    #     self.save()
