@@ -37,10 +37,10 @@ console.log("hi")
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <center><h1>Create a Manufacturer</h1></center>
-                        <form onSubmit={handleSubmit} id="add-manufacturer">
+                        <form onSubmit={ handleSubmit } id="add-manufacturer">
                             <div className="form-floating mb-3">
                                 <input
-                                onChange={handleNameChange}
+                                onChange={ handleNameChange }
                                 value={name}
                                 placeholder="Manufacturer Name"
                                 required type="text"
