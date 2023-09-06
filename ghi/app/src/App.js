@@ -5,6 +5,8 @@ import AutomobileList from './inventory/AutomobileList';
 import ModelForm from './inventory/CreateModel';
 import AutomobileForm from './inventory/CreateAutomobile';
 import ManufacturersList from './inventory/ListManufacturers';
+import ManufacturerForm from './inventory/CreateManufacturer';
+import ModelsList from './inventory/ListVehicleModels';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/manufacturers" element={<ManufacturersList />} />
+          <Route path="/manufacturer/create" element={<ManufacturerForm />} />
+          <Route path="/models" element={<ModelsList />} />
           <Route path="/model/new" element={<ModelForm />} />
           <Route path="/automobiles" element={<AutomobileList />} />
           <Route path="/automobile/new" element={<AutomobileForm />} />
