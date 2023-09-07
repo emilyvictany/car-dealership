@@ -28,6 +28,25 @@ const AppointmentHistory = () => {
     const [appointments, setAppointments] = useState([]);
     // const [vinVO, setVinVO] = useState([])
     const fetchData = async () => {
+        // const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
+        //     try {
+        //         const vinVOResponse = await fetch(vinVOUrl);
+        //         if (vinVOResponse.ok) {
+        //             const vinVOData = await vinVOResponse.json();
+        //             // console.log(vinVOData.automobiles)
+        //             const vinVOObjects = await vinVOData.automobiles;
+
+        //             // console.log("THIS IS THE LisT: ", vinVOObjects)
+        //             const vinList = await vinVOObjects.map((vinObj) => {return vinObj.vin});
+        //             // console.log(vinList)
+        //             // vinVO = vinList
+        //             setVinVO(vinList);
+        //             console.log(vinList)
+        //         }
+        //     } catch (e) {
+        //         console.error(e)
+        //     }
+
         const appUrl = `http://localhost:8080/api/appointments/`;
 
         try {
@@ -42,24 +61,6 @@ const AppointmentHistory = () => {
             console.error(e)
         }
 
-        // const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
-        //     try {
-        //         const vinVOResponse = await fetch(vinVOUrl);
-        //         if (vinVOResponse.ok) {
-        //             const vinVOData = await vinVOResponse.json();
-        //             // console.log(vinVOData.automobiles)
-        //             const vinVOObjects = await vinVOData.automobiles;
-
-        //             // console.log("THIS IS THE LisT: ", vinVOObjects)
-        //             const vinList = await vinVOObjects.map((vinObj) => {return vinObj.vin});
-        //             // console.log(vinList)
-        //             vinVO = vinList
-        //             // setVinVO(vinList);
-        //             console.log(vinVO)
-        //         }
-        //     } catch (e) {
-        //         console.error(e)
-        //     }
     }
 
     useEffect(() => {
@@ -67,6 +68,8 @@ const AppointmentHistory = () => {
     }, []);
 
     return (
+        <>
+        <h1>Service History</h1>
         <div>
             <table className="table table-striped table-hover">
                 <thead>
@@ -91,6 +94,8 @@ const AppointmentHistory = () => {
                         const time = currentDate.toUTCString().split(' ')[4];
                         const date = `${month}/${day}/${year}`;
 
+                        // console.log(appointment.vin in vinVO)
+
                         return (
                         <tr key = { appointment.id }>
                             <td>{ appointment.vin }</td>
@@ -107,7 +112,7 @@ const AppointmentHistory = () => {
                 </tbody>
             </table>
         </div>
-
+        </>
     );
 }
 
