@@ -81,7 +81,7 @@ function CustomerForm() {
                 </div>
             </div>
         </div>
-        );
-    }
+    )
+}
 
 export default CustomerForm
