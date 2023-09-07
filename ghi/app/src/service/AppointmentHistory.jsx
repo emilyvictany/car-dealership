@@ -81,16 +81,14 @@ const AppointmentHistory = () => {
             // fetchData() //resets the history list to original. consider adding this back in during stretch goals
             alert("VIN does not exist")
         }
-        console.log(searchList);
-
-
+        // console.log(searchList);
     }
 
     return (
         <>
         <h1>Service History</h1>
         <div>
-                <input onChange={handleChangeSearch} value={search} placeholder="Search" required type="search" id="search" name="search" className="form-control" />
+            <input onChange={handleChangeSearch} value={search} placeholder="Search" required type="search" id="search" name="search" className="form-control" />
                 <button className='search' type='button' onClick={() => handleSearch(search)}> Search </button>
             <table className="table table-striped table-hover">
                 <thead>
