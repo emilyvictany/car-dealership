@@ -29,8 +29,6 @@ function ManufacturerForm() {
         }
     }
 
-console.log("hi")
-
     return (
         <div className="container">
             <div className="row">
@@ -50,7 +48,7 @@ console.log("hi")
                                 />
                                 <label htmlFor="name">Manufacturer Name</label>
                             </div>
-                            <button className="btn btn-primary">Create</button>
+                            <center><button className="btn btn-primary">Create</button></center>
                         </form>
                     </div>
                 </div>
