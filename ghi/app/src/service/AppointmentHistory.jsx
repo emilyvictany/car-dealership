@@ -26,6 +26,7 @@ import '../index.css'
 const AppointmentHistory = () => {
     // let vinVO = []
     const [appointments, setAppointments] = useState([]);
+    const [search, setSearch] = useState('');
     // const [vinVO, setVinVO] = useState([])
     const fetchData = async () => {
         // const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
@@ -67,10 +68,30 @@ const AppointmentHistory = () => {
         fetchData();
     }, []);
 
+    const handleChangeSearch = (event) => {
+        const value = event.target.value;
+        setSearch(value);
+    }
+
+    const handleSearch = async (search) => {
+        const searchList = appointments.filter((appointment) => appointment.vin == search);
+        if (searchList.length > 0) {
+            setAppointments(searchList)
+        } else {
+            // fetchData() //resets the history list to original. consider adding this back in during stretch goals
+            alert("VIN does not exist")
+        }
+        console.log(searchList);
+
+
+    }
+
     return (
         <>
         <h1>Service History</h1>
         <div>
+                <input onChange={handleChangeSearch} value={search} placeholder="Search" required type="search" id="search" name="search" className="form-control" />
+                <button className='search' type='button' onClick={() => handleSearch(search)}> Search </button>
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -91,8 +112,14 @@ const AppointmentHistory = () => {
                         let month = currentDate.getUTCMonth() + 1;
                         let year = currentDate.getUTCFullYear();
 
-                        const time = currentDate.toUTCString().split(' ')[4];
+                        const timeData = currentDate.toUTCString().split(' ')[4].split(":");
+                        const hour = timeData[0] % 12 ? timeData[0] % 12 : 12;
+                        const minutes = timeData[1]
+                        const am_pm = currentDate.getUTCHours() >= 12 ? "PM" : "AM";
+                        // console.log(am_pm)
                         const date = `${month}/${day}/${year}`;
+                        const time = `${hour}:${minutes} ${am_pm}`;
+                        // console.log(time)
 
                         // console.log(appointment.vin in vinVO)
 

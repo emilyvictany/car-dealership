@@ -105,8 +105,15 @@ const AppointmentList = () => {
                         let month = currentDate.getUTCMonth() + 1;
                         let year = currentDate.getUTCFullYear();
 
-                        const time = currentDate.toUTCString().split(' ')[4];
+                        const timeData = currentDate.toUTCString().split(' ')[4].split(":");
+                        const hour = timeData[0] % 12 ? timeData[0] % 12 : 12;
+                        const minutes = timeData[1]
+                        const am_pm = currentDate.getUTCHours() >= 12 ? "PM" : "AM";
+
                         const date = `${month}/${day}/${year}`;
+                        const time = `${hour}:${minutes} ${am_pm}`;
+                        console.log(time)
+
                         return (
                         <tr key = { appointment.id }>
                             <td>{ appointment.vin }</td>
