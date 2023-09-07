@@ -30,7 +30,7 @@ class Customer(models.Model):
 
 
 class Sale(models.Model):
-    price = models.PositiveSmallIntegerField()
+    price = models.PositiveIntegerField()
 
     automobile = models.ForeignKey(
         AutomobileVO,

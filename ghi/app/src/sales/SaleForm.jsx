@@ -58,7 +58,7 @@ function SaleForm() {
         console.log(data)
         const salesUrl = "http://localhost:8090/api/sales/"
         const fetchConfig = {
-            method: "post",
+            method: 'post',
             body: JSON.stringify(data),
             headers: {
             'Content-Type': 'application/json',
@@ -66,39 +66,39 @@ function SaleForm() {
         }
 
     try {
-        const sale = await fetch(salesUrl, fetchConfig);
+        const sale = await fetch(salesUrl, fetchConfig)
         if (sale.ok) {
-        const newSale = await sale.json()
-        console.log(newSale)
-        setPrice('')
-        setAutomobile('')
-        setSalesperson('')
-        setCustomer('')
+            const newSale = await sale.json()
+            console.log(newSale)
+                setPrice('')
+                setAutomobile('')
+                setSalesperson('')
+                setCustomer('')
         } else {
-        console.error(sale)
+            console.error(sale)
         }
-    } catch (error) {
-        console.error(error)
-    }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     const handlePriceChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value
     setPrice(value)
     }
 
     const handleAutomobileChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value
     setAutomobile(value)
     }
 
     const handleSalespersonChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value
     setSalesperson(value)
     }
 
     const handleCustomerChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value
     setCustomer(value)
     }
 
@@ -132,14 +132,16 @@ function SaleForm() {
                                 <option value="">Choose a Customer</option>
                                 {customers?.map(customer => {
                                     return (
-                                        <option key={customer.id} value={customer.id}>{customer.first_name} {customer.last_name}</option>
+                                        <option key={customer.id} value={customer.id}>
+                                            {customer.first_name} {customer.last_name}
+                                        </option>
                                     )
                                 })}
                             </select>
                         </div>
                         <div className="form-floating mb-3">
                             <input value={price} onChange={handlePriceChange} required placeholder="Price" type="text" min="0" name="price" id="price" className="form-control" />
-                            <label htmlFor="address">Price</label>
+                            <label htmlFor="price">Price</label>
                         </div>
                         <center><button className="btn btn-primary">Create</button></center>
                     </form>
