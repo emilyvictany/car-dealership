@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function SaleForm() {
-    const [price, setPrice] = useState('');
-    const [automobile, setAutomobile] = useState('');
-    const [salesperson, setSalesperson] = useState('');
-    const [customer, setCustomer] = useState('');
-    const [automobiles, setAutomobiles] = useState([]);
-    const [salespeople, setSalespeople] = useState([]);
-    const [customers, setCustomers] = useState([]);
+    const [price, setPrice] = useState('')
+    const [automobile, setAutomobile] = useState('')
+    const [salesperson, setSalesperson] = useState('')
+    const [customer, setCustomer] = useState('')
+    const [automobiles, setAutomobiles] = useState([])
+    const [salespeople, setSalespeople] = useState([])
+    const [customers, setCustomers] = useState([])
 
     async function fetchAutomobileData() {
         const AutomobileUrl = "http://localhost:8100/api/automobiles/"
         const response = await fetch(AutomobileUrl)
         if (response.ok) {
-            const data = await response.json();
-            setAutomobiles(data.autos);
+            const data = await response.json()
+            setAutomobiles(data.autos)
         } else {
-            console.error(response);
+            console.error(response)
         }
     }
 
@@ -32,20 +32,20 @@ function SaleForm() {
     }
 
     async function loadSalespeople() {
-    const response = await fetch('http://localhost:8090/api/salespeople/');
+    const response = await fetch("http://localhost:8090/api/salespeople/")
     console.log(response)
     if (response.ok) {
-        const data = await response.json();
-        setSalespeople(data.salespeople);
+        const data = await response.json()
+        setSalespeople(data.salespeople)
     } else {
-        console.error(response);
+        console.error(response)
         }
     }
 
     useEffect(() => {
-        fetchAutomobileData();
-        loadCustomers();
-        loadSalespeople();
+        fetchAutomobileData()
+        loadCustomers()
+        loadSalespeople()
     }, [])
 
     const handleSubmit = async (event) => {
@@ -68,38 +68,38 @@ function SaleForm() {
     try {
         const sale = await fetch(salesUrl, fetchConfig);
         if (sale.ok) {
-        const newSale = await sale.json();
-        console.log(newSale);
-        setPrice('');
-        setAutomobile('');
-        setSalesperson('');
-        setCustomer('');
+        const newSale = await sale.json()
+        console.log(newSale)
+        setPrice('')
+        setAutomobile('')
+        setSalesperson('')
+        setCustomer('')
         } else {
-        console.error(sale);
+        console.error(sale)
         }
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
     }
 
     const handlePriceChange = (event) => {
     const value = event.target.value;
-    setPrice(value);
+    setPrice(value)
     }
 
     const handleAutomobileChange = (event) => {
     const value = event.target.value;
-    setAutomobile(value);
+    setAutomobile(value)
     }
 
     const handleSalespersonChange = (event) => {
     const value = event.target.value;
-    setSalesperson(value);
+    setSalesperson(value)
     }
 
     const handleCustomerChange = (event) => {
     const value = event.target.value;
-    setCustomer(value);
+    setCustomer(value)
     }
 
     return (
