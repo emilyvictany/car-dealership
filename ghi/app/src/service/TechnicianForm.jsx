@@ -7,19 +7,6 @@ const TechnicianForm = () => {
     const [lastname, setLastName] = useState('');
     const [employeeId, setEmployeeId] = useState('');
 
-    // const fetchData = async () => {
-    //     const url = 'http://localhost:8100/api/manufacturers/';
-    //     const response = await fetch(url);
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         setManufacturers(data.manufacturers);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
     const handleChangeFirstName = (event) => {
         const value = event.target.value;
         setFirstName(value);

@@ -15,6 +15,7 @@ class Appointment(models.Model):
     reason = models.CharField(max_length=200)
     status = models.CharField(max_length=15)
     vin = models.CharField(max_length=200) #this VIN isn't unique because the person has to type it in, so if they make multiple appointments, then this VIN might be re-used
+    customer = models.CharField(max_length=200, null=True)
     technician = models.ForeignKey(
         Technician,
         related_name = "appointment",

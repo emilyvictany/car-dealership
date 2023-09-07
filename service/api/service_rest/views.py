@@ -29,6 +29,7 @@ class AppointmentEncoder(ModelEncoder):
         "reason",
         "status",
         "vin",
+        "customer",
         "technician"
     ]
     encoders = {"technician" : TechnicianEncoder()}
@@ -47,11 +48,17 @@ def api_automobileVO(request):
 def api_technicians(request, technician_id=None):
     if technician_id == None:
         if request.method == "GET":
-            technicians = Technician.objects.all()
-            return JsonResponse(
-                {"technicians" : technicians},
-                encoder = TechnicianEncoder
-            )
+            try:
+                technicians = Technician.objects.all()
+                return JsonResponse(
+                    {"technicians" : technicians},
+                    encoder = TechnicianEncoder
+                )
+            except:
+                return JsonResponse(
+                    {"message": "Could get a technician"},
+                    status=400
+                )
         else:
             content = json.loads(request.body)
             print("THIS IS THE CONTENT: ", content)
@@ -77,15 +84,21 @@ def api_technicians(request, technician_id=None):
 @require_http_methods(["GET", "POST"])
 def api_appointments(request):
     if request.method == "GET":
-        appointments = Appointment.objects.all()
-        return JsonResponse(
-            {"appointments" : appointments},
-            encoder = AppointmentEncoder
-        )
-    else: #POST
-        content = json.loads(request.body)
-        print("THIS IS THE CONTENT: ", content)
         try:
+            appointments = Appointment.objects.all()
+            return JsonResponse(
+                {"appointments" : appointments},
+                encoder = AppointmentEncoder
+            )
+        except:
+                return JsonResponse(
+                    {"message": "Could not get appointment"},
+                    status=400
+                )
+    else: #POST
+        try:
+            content = json.loads(request.body)
+            print("THIS IS THE CONTENT: ", content)
             technician = Technician.objects.get(employee_id=content["technician"])
             content["technician"] = technician
             appointment = Appointment.objects.create(**content)
@@ -106,11 +119,17 @@ def api_appointment(request, appointment_id=None):
             count, _ = Appointment.objects.filter(id=appointment_id).delete()
             return JsonResponse({"deleted": count > 0})
     else:
-        content = json.loads(request.body)
-        Appointment.objects.filter(id=appointment_id).update(**content)
-        appointment = Appointment.objects.get(id=appointment_id)
-        return JsonResponse(
-            appointment,
-            encoder=AppointmentEncoder,
-            safe=False,
-        )
+        try:
+            content = json.loads(request.body)
+            Appointment.objects.filter(id=appointment_id).update(**content)
+            appointment = Appointment.objects.get(id=appointment_id)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except:
+                return JsonResponse(
+                    {"message": "Could not update appointment"},
+                    status=400
+                )
