@@ -27,7 +27,6 @@ const AppointmentList = () => {
 
     const handleCancel = async (id) => {
         const newAppList = appointments.filter((appointment) => appointment.id != id);
-        console.log(newAppList);
         const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
         const putOptions = {
             method: 'PUT',
@@ -40,7 +39,6 @@ const AppointmentList = () => {
         if (putResponse.ok) {
             setAppointments(newAppList);
         }
-        console.log(newAppList);
     }
 
     const handleFinish = async (id) => {
@@ -58,7 +56,6 @@ const AppointmentList = () => {
         if (putResponse.ok) {
             setAppointments(newAppList);
         }
-        console.log(newAppList);
     }
 
     return (
@@ -92,7 +89,6 @@ const AppointmentList = () => {
 
                         const date = `${month}/${day}/${year}`;
                         const time = `${hour}:${minutes} ${am_pm}`;
-                        console.log(time)
 
                         return (
                         <tr key = { appointment.id }>

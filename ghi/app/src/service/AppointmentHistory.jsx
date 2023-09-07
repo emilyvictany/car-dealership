@@ -38,8 +38,8 @@ const AppointmentHistory = () => {
         if (searchList.length > 0) {
             setAppointments(searchList)
         } else {
-            // fetchData() //resets the history list to original. consider adding this back in during stretch goals
-            alert("VIN does not exist")
+            fetchData() //resets the history list to original. consider adding this back in during stretch goals
+            alert("VIN does not exist in current list.\n Returning to original list.")
         }
         // console.log(searchList);
     }
