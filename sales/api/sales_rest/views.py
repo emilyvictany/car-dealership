@@ -45,7 +45,7 @@ class SaleEncoder(ModelEncoder):
         "id",
         "price",
         "automobile",
-        "sales_person",
+        "salesperson",
         "customer"]
 
     encoders = {
@@ -96,34 +96,38 @@ def api_salesperson(request):
 
 
 @require_http_methods(["GET", "POST", "DELETE"])
-def api_customer(request):
-    if request.method == "GET":  # list all customers
-        customers = Customer.objects.all()
-        return JsonResponse(
-            {"customers": customers},
-            encoder=CustomerEncoder
-        )
-
-    elif request.method == "DELETE":  # delete a specific customer
-        try:
-            customer = Customer.objects.filter(id=id).delete()
-            return JsonResponse({"confirmation": "Customer deleted"})
-        except Customer.DoesNotExist:
-            return JsonResponse({"message": "Customer does not exist"})
-
-    else:  # POST, create customer
-        content = json.loads(request.body)
-        try:
-            customer = Customer.objects.create(**content)
+def api_customer(request, id=None):
+    if id is None:
+        if request.method == "GET":  # list all customers
+            customers = Customer.objects.all()
             return JsonResponse(
-                customer,
-                encoder=CustomerEncoder,
-                safe=False
+                {"customers": customers},
+                encoder=CustomerEncoder
             )
-        except:
-            response = JsonResponse({"message": "Unable to create customer"})
-            response.status_code = 400
-            return response
+        else:  # POST, create customer
+            content = json.loads(request.body)
+            try:
+                customer = Customer.objects.create(**content)
+                return JsonResponse(
+                    customer,
+                    encoder=CustomerEncoder,
+                    safe=False
+                )
+            except:
+                response = JsonResponse({"message": "Unable to create customer"})
+                response.status_code = 400
+                return response
+    else:
+        if request.method == "DELETE":  # delete a specific customer
+            try:
+                customer = Customer.objects.filter(id=id).delete()
+                return JsonResponse({"confirmation": "Customer deleted"})
+            except Customer.DoesNotExist:
+                return JsonResponse(
+                    {"message": "Customer does not exist"},
+                    status=404
+                )
+
 
 
 @require_http_methods(["GET", "POST", "DELETE"])
