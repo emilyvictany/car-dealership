@@ -149,8 +149,6 @@ def api_sales(request, id=None):
                 vin = content["automobile"]
                 auto = AutomobileVO.objects.get(vin=vin)
                 content["automobile"] = auto
-                content["automobile"].sold = True
-                content["automobile"].save()
             except AutomobileVO.DoesNotExist:
                 return JsonResponse(
                     {"message": "Automobile either unavailable or does not exist"},
@@ -174,7 +172,7 @@ def api_sales(request, id=None):
                     {"message": "Customer does not exist"},
                     status=404
                 )
-            price = content["price"]
+            # price = content["price"]
             sale = Sale.objects.create(**content)
             return JsonResponse(
                 sale,
@@ -188,3 +186,14 @@ def api_sales(request, id=None):
                 return JsonResponse({"confirmation": "Sale deleted"})
             except Sale.DoesNotExist:
                 return JsonResponse({"message": "Sale does not exist"}, status=404)
+
+
+# test poller
+def getAutoVO(request):
+    if request.method == "GET":
+        autoVO = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"autoVO": autoVO},
+            encoder=AutomobileVOEncoder,
+            safe=False
+        )
