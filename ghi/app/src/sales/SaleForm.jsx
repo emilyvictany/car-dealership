@@ -26,7 +26,7 @@ function SaleForm() {
 
     const loadCustomers = async () => {
         const response = await fetch("http://localhost:8090/api/customers/")
-        console.log(response);
+        // console.log(response)
         if (response.ok) {
             const data = await response.json()
             setCustomers(data.customers)
@@ -37,7 +37,7 @@ function SaleForm() {
 
     async function loadSalespeople() {
     const response = await fetch("http://localhost:8090/api/salespeople/")
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         const data = await response.json()
         setSalespeople(data.salespeople)
@@ -61,7 +61,7 @@ function SaleForm() {
         data.automobile = vin
         data.salesperson = salesperson
         data.customer = customer
-        console.log(data)
+        // console.log(data)
 
         const url = "http://localhost:8090/api/sales/"
         const fetchConfig = {
@@ -73,8 +73,8 @@ function SaleForm() {
         }
 
         const response = await fetch(url, fetchConfig)
-        console.log(response.ok)
-        console.log(response.status)
+        // console.log(response.ok)
+        // console.log(response.status)
 
         const soldUrl = `http://localhost:8100/api/automobiles/${vin}/`
         const fetchSoldConfig = {
@@ -93,7 +93,7 @@ function SaleForm() {
 
         if (response.ok) {
             const newSale = await response.json()
-            console.log(newSale)
+            // console.log(newSale)
             setVin('')
             setSalesperson('')
             setCustomer('')

@@ -43,7 +43,7 @@ const AppointmentList = () => {
 
     const handleFinish = async (id) => {
         const newAppList = appointments.filter((appointment) => appointment.id != id);
-        console.log(newAppList);
+        // console.log(newAppList);
         const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
         const putOptions = {
             method: 'PUT',

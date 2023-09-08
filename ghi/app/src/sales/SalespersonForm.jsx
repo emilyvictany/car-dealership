@@ -24,7 +24,7 @@ function SalespersonForm() {
         const salesperson = await fetch(salespersonUrl, fetchConfig);
         if (salesperson.ok) {
             const NewSalesperson = await salesperson.json()
-            console.log(NewSalesperson)
+            // console.log(NewSalesperson)
             setFirstName('')
             setLastName('')
             setEmployeeID('')
