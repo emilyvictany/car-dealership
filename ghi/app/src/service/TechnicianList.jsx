@@ -11,7 +11,7 @@ const TechnicianList = () => {
             const techsResponse = await fetch(techUrl);
             if (techsResponse.ok) {
                 const techsData = await techsResponse.json();
-                console.log(techsData.technicians)
+                // console.log(techsData.technicians)
                 const techsList = techsData.technicians;
                 setTechs(techsList)
             }

@@ -28,7 +28,7 @@ const TechnicianForm = () => {
         data.first_name = firstname;
         data.last_name = lastname;
         data.employee_id = employeeId;
-        console.log(data);
+        // console.log(data);
 
         const techsUrl = `http://localhost:8080/api/technicians/`;
         const fetchOptions = {
@@ -39,13 +39,13 @@ const TechnicianForm = () => {
             },
         };
         const techsResponse = await fetch(techsUrl, fetchOptions);
-        console.log(techsResponse.ok)
-        console.log(techsResponse.status)
+        // console.log(techsResponse.ok)
+        // console.log(techsResponse.status)
         if (techsResponse.ok) {
             setFirstName('');
             setLastName('');
             setEmployeeId('');
-            console.log('FORM SUBMITTED:' + techsResponse)
+            // console.log('FORM SUBMITTED:' + techsResponse)
         }
     }
 

@@ -64,7 +64,7 @@ const AppointmentForm = () => {
         data.vin = vin;
         data.customer = customer;
         data.technician = technician;
-        console.log(data);
+        // console.log(data);
 
         const appUrl = `http://localhost:8080/api/appointments/`;
         const fetchOptions = {
@@ -75,8 +75,8 @@ const AppointmentForm = () => {
             },
         };
         const newAppResponse = await fetch(appUrl, fetchOptions);
-        console.log(newAppResponse.ok)
-        console.log(newAppResponse.status)
+        // console.log(newAppResponse.ok)
+        // console.log(newAppResponse.status)
         if (newAppResponse.ok) {
             setDate('');
             setTime('');
@@ -84,7 +84,7 @@ const AppointmentForm = () => {
             setCustomer('');
             setVin('');
             setTechnician(0);
-            console.log('FORM SUBMITTED:' + newAppResponse)
+            // console.log('FORM SUBMITTED:' + newAppResponse)
         }
     }
 

@@ -10,7 +10,7 @@ function SaleForm() {
     const [customers, setCustomers] = useState([])
 
     const [vins, setVins] = useState([])
-    const [vin, setVin] = useState([])
+    const [vin, setVin] = useState('')
 
     async function fetchAutomobileData() {
         const AutomobileUrl = "http://localhost:8100/api/automobiles/"
@@ -157,7 +157,7 @@ function SaleForm() {
                     <center><h1>Record a New Sale</h1></center>
                     <form onSubmit={ handleSubmit } id="create-sale-form">
                         <div className="form-floating mb-3">
-                            <select onChange={ handleVinChange } placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
+                            <select onChange={ handleVinChange } value={vin} placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
                                 <option value="">Choose an Automobile VIN</option>
                                 {vins?.map(auto => {
                                     return (
@@ -167,7 +167,7 @@ function SaleForm() {
                             </select>
                         </div>
                         <div className="form-floating mb-3">
-                            <select onChange={ handleSalespersonChange } placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
+                            <select onChange={ handleSalespersonChange } value={salesperson} placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
                                 <option value="">Choose a Salesperson</option>
                                 {salespeople?.map(salespeople => {
                                     return (
@@ -177,7 +177,7 @@ function SaleForm() {
                             </select>
                         </div>
                         <div className="form-floating mb-3">
-                            <select onChange={handleCustomerChange} placeholder="Customer" type="text" name="customer" id="customer" className="form-select">
+                            <select onChange={handleCustomerChange} value={customer} placeholder="Customer" type="text" name="customer" id="customer" className="form-select">
                                 <option value="">Choose a Customer</option>
                                 {customers?.map(customer => {
                                     return (
