@@ -94,7 +94,7 @@ const AppointmentForm = () => {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create an Appointment</h1>
-            <form onSubmit={handleSubmit} id="create-presentation-form">
+            <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
                     <input onChange={handleChangeDate} value={date} placeholder="Date" required type="date" id="date" name="date" className="form-control"/>
                     <label htmlFor="date">Date</label>

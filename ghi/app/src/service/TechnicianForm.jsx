@@ -55,7 +55,7 @@ const TechnicianForm = () => {
         <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
             <h1>Create a Technician</h1>
-            <form onSubmit={handleSubmit} id="create-presentation-form">
+            <form onSubmit={handleSubmit} id="create-technician-form">
                 <div className="form-floating mb-3">
                     <input onChange={handleChangeFirstName} value={firstname} placeholder="First Name" required type="text" id="first_name" name="first_name" className="form-control"/>
                     <label htmlFor="first_name">First Name</label>

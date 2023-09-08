@@ -2,51 +2,11 @@ import { NavLink } from 'react-router-dom';
 import React, {useEffect, useState} from "react";
 import '../index.css'
 
-// const isVip = async (x) => {
-//     const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
-//         try {
-//             const vinVOResponse = await fetch(vinVOUrl);
-//             if (vinVOResponse.ok) {
-//                 const vinVOData = await vinVOResponse.json();
-//                 // console.log(vinVOData.automobiles)
-//                 const vinVOObjects = await vinVOData.automobiles;
-//                 for (let vinVOObject of vinVOObjects) {
-//                     if (x == vinVOObject["vin"]) {
-//                         return "Yes";
-//                     }
-//                 }
-//                 return "No";
-//                 // console.log("THIS IS THE LisT: ", vinVOList)
-//             }
-//         } catch (e) {
-//             console.error(e)
-//         }
-// }
-
 const AppointmentHistory = () => {
-    // let vinVO = []
     const [appointments, setAppointments] = useState([]);
     const [search, setSearch] = useState('');
-    // const [vinVO, setVinVO] = useState([])
     const fetchData = async () => {
-        // const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
-        //     try {
-        //         const vinVOResponse = await fetch(vinVOUrl);
-        //         if (vinVOResponse.ok) {
-        //             const vinVOData = await vinVOResponse.json();
-        //             // console.log(vinVOData.automobiles)
-        //             const vinVOObjects = await vinVOData.automobiles;
 
-        //             // console.log("THIS IS THE LisT: ", vinVOObjects)
-        //             const vinList = await vinVOObjects.map((vinObj) => {return vinObj.vin});
-        //             // console.log(vinList)
-        //             // vinVO = vinList
-        //             setVinVO(vinList);
-        //             console.log(vinList)
-        //         }
-        //     } catch (e) {
-        //         console.error(e)
-        //     }
 
         const appUrl = `http://localhost:8080/api/appointments/`;
 
@@ -78,8 +38,8 @@ const AppointmentHistory = () => {
         if (searchList.length > 0) {
             setAppointments(searchList)
         } else {
-            // fetchData() //resets the history list to original. consider adding this back in during stretch goals
-            alert("VIN does not exist")
+            fetchData() //resets the history list to original. consider adding this back in during stretch goals
+            alert("VIN does not exist in current list.\n Returning to original list.")
         }
         // console.log(searchList);
     }
@@ -119,12 +79,10 @@ const AppointmentHistory = () => {
                         const time = `${hour}:${minutes} ${am_pm}`;
                         // console.log(time)
 
-                        // console.log(appointment.vin in vinVO)
-
                         return (
                         <tr key = { appointment.id }>
                             <td>{ appointment.vin }</td>
-                            <td>{ 'hold' }</td>
+                            <td>{ appointment.vipVIN ? "Yes" : "No" }</td>
                             <td>{ appointment.customer }</td>
                             <td>{ date } </td>
                             <td>{ time }</td>

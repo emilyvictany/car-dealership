@@ -4,7 +4,6 @@ import '../index.css'
 
 const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
-    // const [vinVO, setVinVO] = useState([])
     const fetchData = async () => {
         const appUrl = `http://localhost:8080/api/appointments/`;
 
@@ -20,25 +19,6 @@ const AppointmentList = () => {
         } catch (e) {
             console.error(e)
         }
-
-        // const vinVOUrl = `http://localhost:8080/api/automobilesVO/`;
-        //     try {
-        //         const vinVOResponse = await fetch(vinVOUrl);
-        //         if (vinVOResponse.ok) {
-        //             const vinVOData = await vinVOResponse.json();
-        //             // console.log(vinVOData.automobiles)
-        //             const vinVOObjects = await vinVOData.automobiles;
-
-        //             // console.log("THIS IS THE LisT: ", vinVOObjects)
-        //             const vinList = await vinVOObjects.map((vinObj) => {return vinObj.vin});
-        //             // console.log(vinList)
-        //             vinVO = vinList
-        //             // setVinVO(vinList);
-        //             console.log(vinVO)
-        //         }
-        //     } catch (e) {
-        //         console.error(e)
-        //     }
     }
 
     useEffect(() => {
@@ -47,7 +27,6 @@ const AppointmentList = () => {
 
     const handleCancel = async (id) => {
         const newAppList = appointments.filter((appointment) => appointment.id != id);
-        console.log(newAppList);
         const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
         const putOptions = {
             method: 'PUT',
@@ -60,7 +39,6 @@ const AppointmentList = () => {
         if (putResponse.ok) {
             setAppointments(newAppList);
         }
-        console.log(newAppList);
     }
 
     const handleFinish = async (id) => {
@@ -78,7 +56,6 @@ const AppointmentList = () => {
         if (putResponse.ok) {
             setAppointments(newAppList);
         }
-        console.log(newAppList);
     }
 
     return (
@@ -112,12 +89,11 @@ const AppointmentList = () => {
 
                         const date = `${month}/${day}/${year}`;
                         const time = `${hour}:${minutes} ${am_pm}`;
-                        console.log(time)
 
                         return (
                         <tr key = { appointment.id }>
                             <td>{ appointment.vin }</td>
-                            <td>{ 'hold' }</td>
+                            <td>{ appointment.vipVIN ? "Yes" : "No" }</td>
                             <td>{ appointment.customer }</td>
                             <td>{ date } </td>
                             <td>{ time }</td>

@@ -34,6 +34,11 @@ class AppointmentEncoder(ModelEncoder):
     ]
     encoders = {"technician" : TechnicianEncoder()}
 
+    def get_extra_data(self, o):
+        vipVIN = AutomobileVO.objects.filter(vin=o.vin).count()
+        print(vipVIN)
+        return {"vipVIN" : vipVIN > 0}
+
 @require_http_methods(["GET"])
 def api_automobileVO(request):
     if request.method == "GET":
