@@ -9,6 +9,9 @@ function SaleForm() {
     const [salespeople, setSalespeople] = useState([])
     const [customers, setCustomers] = useState([])
 
+    const [vins, setVins] = useState([])
+    const [vin, setVin] = useState([])
+
     async function fetchAutomobileData() {
         const AutomobileUrl = "http://localhost:8100/api/automobiles/"
         const response = await fetch(AutomobileUrl)
@@ -19,6 +22,7 @@ function SaleForm() {
             console.error(response)
         }
     }
+    // console.log(automobiles)
 
     const loadCustomers = async () => {
         const response = await fetch("http://localhost:8090/api/customers/")
@@ -50,13 +54,16 @@ function SaleForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
         const data = {}
+
         data.price = price
-        data.automobile = automobile
+        data.automobile = vin
         data.salesperson = salesperson
         data.customer = customer
         console.log(data)
-        const salesUrl = "http://localhost:8090/api/sales/"
+
+        const url = "http://localhost:8090/api/sales/"
         const fetchConfig = {
             method: 'post',
             body: JSON.stringify(data),
@@ -65,22 +72,35 @@ function SaleForm() {
             },
         }
 
-    try {
-        const sale = await fetch(salesUrl, fetchConfig)
-        if (sale.ok) {
-            const newSale = await sale.json()
-            console.log(newSale)
-                setPrice('')
-                setAutomobile('')
-                setSalesperson('')
-                setCustomer('')
-        } else {
-            console.error(sale)
+        const response = await fetch(url, fetchConfig)
+        console.log(response.ok)
+        console.log(response.status)
+
+        const soldUrl = `http://localhost:8100/api/automobiles/${vin}/`
+        const fetchSoldConfig = {
+            method: "put",
+            body: JSON.stringify({"sold": true}),
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        };
+
+        const soldResponse = await fetch(soldUrl, fetchSoldConfig);
+        if (soldResponse.ok) {
+            const updateSold = await soldResponse.json()
+            setAutomobile(updateSold)
         }
-        } catch (error) {
-            console.error(error)
+
+        if (response.ok) {
+            const newSale = await response.json()
+            console.log(newSale)
+            setVin('')
+            setSalesperson('')
+            setCustomer('')
+            setPrice('')
         }
     }
+
 
     const handlePriceChange = (event) => {
     const value = event.target.value
@@ -102,6 +122,34 @@ function SaleForm() {
     setCustomer(value)
     }
 
+    const handleVinChange = (event) => {
+    const value = event.target.value
+    setVin(value);
+    }
+
+    async function getVin() {
+        const url = "http://localhost:8100/api/automobiles/"
+        const response = await fetch(url);
+        if (response.ok) {
+            const data = await response.json();
+            let unsoldAutos = [];
+            for (let auto of data.autos) {
+                if (auto.sold === false) {
+                    unsoldAutos.push(auto);
+                }
+            }
+            setVins(unsoldAutos);
+        }
+    }
+
+    useEffect(() => {
+        getVin();
+        // getSalespeople();
+        // getCustomers();
+    }, []);
+
+
+
     return (
         <div className="row">
             <div className="offset-3 col-6">
@@ -109,16 +157,17 @@ function SaleForm() {
                     <center><h1>Record a New Sale</h1></center>
                     <form onSubmit={ handleSubmit } id="create-sale-form">
                         <div className="form-floating mb-3">
-                            <select required value={automobile} onChange={ handleAutomobileChange } placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
+                            <select onChange={ handleVinChange } placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
                                 <option value="">Choose an Automobile VIN</option>
-                                {automobiles?.map(auto => {return (
-                                <option key={auto.vin} value={auto.vin}>{auto.vin}</option>
-                                )
+                                {vins?.map(auto => {
+                                    return (
+                                    <option key={auto.vin} value={auto.vin}>{auto.vin}</option>
+                                    )
                                 })}
                             </select>
                         </div>
                         <div className="form-floating mb-3">
-                            <select onChange={handleSalespersonChange} placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
+                            <select onChange={ handleSalespersonChange } placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
                                 <option value="">Choose a Salesperson</option>
                                 {salespeople?.map(salespeople => {
                                     return (
