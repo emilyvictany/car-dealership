@@ -1,17 +1,17 @@
 # CarCar
 CarCar is an application for managing aspects of an automobile dealership— specifically its inventory, service center, and sales.
 
-##### Team:
+#### Team:
 
 * Brian La - Service
 * Emily Yim - Sales
 
 ## Design
 
-![Img](DiagramProjectBeta_excalidraw.png)
+![Img](diagram_car_dealership.png)
 
 If image is not available, please see the following link:
-https://excalidraw.com/#json=eeKFw_zk_XcMKUyfSyJzc,FFBT6y7VUNqMhXJf1CQvsA
+https://excalidraw.com/#room=c98d494342d2014b7cb7,kkOw0OFvQTm1WgK75rRNUQ
 
 ## Service microservice
 
@@ -37,23 +37,27 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
 * Sale: price, automobile, salesperson, and customer. Created a special feature to ensure that only automobiles that have not been sold are available to sell.
 * AutomobileVO: works with the poller to pole the VIN and sold status. This is what makes the special feature possible
 
+---
 
-### Getting setup
+## Getting Started
+
 
 * Fork from repository at https://gitlab.com/bmlx23/project-beta
 * Setup gitlab if you need to add members
-* Clone the git to your local computer
-* Run the following commands on your computer
-    * docker volume create beta-data
-    * docker-compose build
-    * docker-compose up
+* Clone with ***git clone*** to your local computer
+    * Use HTTPS if SSH has not been set up
+* Run the following commands in **Docker** on your computer
+    1. *docker volume create beta-data*
+    2.  *docker-compose build*
+    3.  *docker-compose up*
 
-### Inventory Monolith CRUD
+---
+## Inventory Monolith CRUD
 * Build a CRUD for the Inventory Monolith
-* From Insomnia and your browser, you can access the manufacturer endpoints at the following URLs.
+* From **Insomnia** and your browser, you can access the manufacturer endpoints at the following URLs.
 CRUD will be listed in the following structure:
 
-#### Manufacturers CRUD:
+### Manufacturers CRUD
 | Action | Method | URL
 | ----------- | ----------- | -----------|
 | List manufacturers | GET | http://localhost:8100/api/manufacturers/
@@ -62,12 +66,12 @@ CRUD will be listed in the following structure:
 | Update a specific manufacturer | PUT | http://localhost:8100/api/manufacturers/:id/
 | Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/:id/
 
-#### Creating or updating manufacturer example:
+##### Creating or updating manufacturer example:
 ``````
 { "name": "Chrysler" }
 ``````
 
-#### Vehicle models CRUD:
+### Vehicle models CRUD
 | Action | Method | URL
 | ----------- | ----------- | -----------|
 |List vehicle models|GET|http://localhost:8100/api/models/
@@ -76,7 +80,7 @@ CRUD will be listed in the following structure:
 |Update a specific vehicle model|PUT|http://localhost:8100/api/models/:id/
 |Delete a specific vehicle model|DELETE|http://localhost:8100/api/models/:id/
 
-#### Create a vehicle model example:
+##### Create a vehicle model example:
 ``````
 {
     "name": "Sebring",
@@ -84,14 +88,14 @@ CRUD will be listed in the following structure:
     "manufacturer_id": 1
 }
 ``````
-#### Update a vehicle model example:
+##### Update a vehicle model example:
 ``````
 {
     "name": "Sebring",
     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
 }
 ``````
-#### Automobile information CRUD:
+### Automobile information CRUD
 | Action | Method | URL
 | ----------- | ----------- | -----------|
 |List automobiles|GET|http://localhost:8100/api/automobiles/
@@ -100,7 +104,7 @@ CRUD will be listed in the following structure:
 |Update a specific automobile|PUT|http://localhost:8100/api/automobiles/:vin/
 |Delete a specific automobile|DELETE|http://localhost:8100/api/automobiles/:vin/
 
-#### Create an automobile example:
+##### Create an automobile example:
 ``````
 {
   "color": "red",
@@ -109,7 +113,7 @@ CRUD will be listed in the following structure:
   "model_id": 1
 }
 ``````
-#### Update an automobile example:
+##### Update an automobile example:
 ``````
 {
   "color": "red",
@@ -117,7 +121,8 @@ CRUD will be listed in the following structure:
   "sold": true
 }
 ``````
-### Service Microservice CRUD:
+---
+## Service Microservice CRUD:
 Build a CRUD for the Service Microservice using the following URLs.
 | Action | Method | URL
 | ----------- | ----------- | -----------|
@@ -158,16 +163,16 @@ Build a CRUD for the Service Microservice using the following URLs.
 	"employee_id" : "ffelix"
 }
 ``````
-
-### Sales Microservice CRUD
-#### Customers
+---
+## Sales Microservice CRUD
+### Customers CRUD
 | Action | Method | URL
 | - | - | - |
 | Create a customer | POST | http://localhost:8090/api/customer/
 | List customers | GET | http://localhost:8090/api/customers/
 | Delete a customer | DELETE | http://localhost:8090/api/customers/id/
 
-**Creating a customer**:
+##### Creating a customer:
 To create a customer, here is an example of a JSON body to send:
 ```
 {
@@ -187,8 +192,7 @@ and the response should look like this:
 	"phone_number": "415-554-4000"
 }
 ```
-
-**Listing all customers**:
+##### Listing all customers:
 After sending a GET request to list all customer, the return value should look something like this:
 ```
 {
@@ -217,24 +221,21 @@ After sending a GET request to list all customer, the return value should look s
 	]
 }
 ```
-
-**Deleting a customer**:
+##### Deleting a customer:
 After selecting which customer to delete by putting the customer ID in the URL, the successful response should look like this:
 ```
 {
   "deleted": true
 }
 ```
-
-#### Salesperson
-
+### Salesperson CRUD
 | Action | Method | URL
 | - | - | - |
 | Create a salesperson | POST | http://localhost:8090/api/salesperson/
 | List all salespeople | GET | http://localhost:8090/api/salespeople/
 | Delete a salesperson | DELETE | http://localhost:8090/api/salesperson/id/
 
-**Creating a salesperson**:
+##### Creating a salesperson:
 To create a salesperson, here is an example of a JSON body to send:
 ```
 {
@@ -252,8 +253,7 @@ and the response should look like this:
 	"employee_id": "SMitchell"
 }
 ```
-
-**Listing all salespeople**:
+##### Listing all salespeople:
 After sending a GET request to list all salespeople, the return value should look something like this:
 ```
 {
@@ -279,16 +279,14 @@ After sending a GET request to list all salespeople, the return value should loo
 	]
 }
 ```
-
-**Deleting a salesperson**:
+##### Deleting a salesperson:
 After selecting which salesperson to delete by putting the salesperson's ID in the URL, the successful response should look like this:
 ```
 {
     "deleted": true
 }
 ```
-
-#### Sales
+### Sales CRUD
 
 | Action | Method | URL
 | - | - | - |
@@ -296,7 +294,7 @@ After selecting which salesperson to delete by putting the salesperson's ID in t
 | List all sales | GET | http://localhost:8090/api/sales/
 | Delete a sale | DELETE | http://localhost:8090/api/sales/id/
 
-**Creating a sale**:
+##### Creating a sale:
 To create a sale, we use the automobile's VIN for the automobile, the employee's ID for the salesperson, and the customer's ID for customer.
 
 After every successful sale, a PUT request is sent to the Inventory microservice to update an automobile's sold status. This integration ensures that a salesperson cannot list a car that has already been sold.
@@ -334,7 +332,7 @@ and the response should look like this:
 	}
 }
 ```
-**Listing all sales**:
+##### Listing all sales:
 After sending a GET request to list all sales, the return value should look something like this:
 ```
 {
@@ -384,8 +382,7 @@ After sending a GET request to list all sales, the return value should look some
 	]
 }
 ```
-
-**Deleting a salesperson**:
+##### Deleting a salesperson:
 After selecting which sale to delete by putting the sale ID in the URL, the successful response should look like this:
 ```
 {
