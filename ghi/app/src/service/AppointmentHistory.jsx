@@ -7,7 +7,6 @@ const AppointmentHistory = () => {
     const [search, setSearch] = useState('');
     const fetchData = async () => {
 
-
         const appUrl = `http://localhost:8080/api/appointments/`;
 
         try {
@@ -46,6 +45,7 @@ const AppointmentHistory = () => {
 
     return (
         <>
+        <br />
         <h1>Service History</h1>
         <div>
             <input onChange={handleChangeSearch} value={search} placeholder="Search" required type="search" id="search" name="search" className="form-control" />

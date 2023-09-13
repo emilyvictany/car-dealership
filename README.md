@@ -8,7 +8,7 @@ CarCar is an application for managing aspects of an automobile dealership— spe
 
 ## Design
 
-![Img](diagram_car_dealership.png)
+![Img](car_dealership_diagram.png)
 
 If image is not available, please see the following link:
 https://excalidraw.com/#room=c98d494342d2014b7cb7,kkOw0OFvQTm1WgK75rRNUQ
@@ -40,12 +40,13 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
 ---
 
 ## Getting Started
-
+*for this project we used git, Docker, and Insomnia*
 
 * Fork from repository at https://gitlab.com/bmlx23/project-beta
 * Setup gitlab if you need to add members
 * Clone with ***git clone*** to your local computer
     * Use HTTPS if SSH has not been set up
+	* after cloning, we used *code .* to open project in **VS Code**
 * Run the following commands in **Docker** on your computer
     1. *docker volume create beta-data*
     2.  *docker-compose build*
