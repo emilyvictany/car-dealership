@@ -1,5 +1,6 @@
 # CarCar
 CarCar is an application for managing aspects of an automobile dealership— specifically its inventory, service center, and sales.
+<img src="https://i.pinimg.com/originals/9e/9c/68/9e9c68435731c23c00573a1544d539b3.gif" width="450" height="300"/>
 
 #### Team:
 
@@ -51,7 +52,7 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
     2.  `docker-compose build`
     3.  `docker-compose up`
 
----
+
 ## Inventory Monolith CRUD
 * Build a CRUD for the Inventory Monolith
 * From **Insomnia** and your browser, you can access the manufacturer endpoints at the following URLs.
@@ -66,10 +67,13 @@ CRUD will be listed in the following structure:
 | Update a specific manufacturer | PUT | http://localhost:8100/api/manufacturers/:id/
 | Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/:id/
 
-##### Creating or updating manufacturer example:
-``````
+<details>
+<summary markdown="span"> Creating or updating manufacturer example </summary>
+
+```
 { "name": "Chrysler" }
-``````
+```
+</details>
 
 ### Vehicle models CRUD
 | Action | Method | URL
@@ -80,21 +84,29 @@ CRUD will be listed in the following structure:
 |Update a specific vehicle model|PUT|http://localhost:8100/api/models/:id/
 |Delete a specific vehicle model|DELETE|http://localhost:8100/api/models/:id/
 
-##### Create a vehicle model example:
-``````
+<details>
+<summary markdown="span">Create a vehicle model example</summary>
+
+```
 {
     "name": "Sebring",
     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
     "manufacturer_id": 1
 }
-``````
-##### Update a vehicle model example:
-``````
+```
+</details>
+
+<details>
+<summary markdown="span">Update a vehicle model example</summary>
+
+```
 {
     "name": "Sebring",
     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"
 }
-``````
+```
+</details>
+
 ### Automobile information CRUD
 | Action | Method | URL
 | ----------- | ----------- | -----------|
@@ -104,23 +116,30 @@ CRUD will be listed in the following structure:
 |Update a specific automobile|PUT|http://localhost:8100/api/automobiles/:vin/
 |Delete a specific automobile|DELETE|http://localhost:8100/api/automobiles/:vin/
 
-##### Create an automobile example:
-``````
+<details>
+<summary markdown="span">Create an automobile example</summary>
+
+```
 {
   "color": "red",
   "year": 2012,
   "vin": "1C3CC5FB2AN120174",
   "model_id": 1
 }
-``````
-##### Update an automobile example:
-``````
+```
+</details>
+
+<details>
+<summary markdown="span">Update an automobile example</summary>
+
+```
 {
   "color": "red",
   "year": 2012,
   "sold": true
 }
-``````
+```
+</details>
 
 ## Service Microservice CRUD:
 
