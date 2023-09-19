@@ -124,7 +124,7 @@ CRUD will be listed in the following structure:
 
 ## Service Microservice CRUD:
 
-<img src="https://cdn.dribbble.com/users/207059/screenshots/16573461/media/f154d82ff06254c9d49bd8ddda1db06f.gif" alt="car servicing"/>
+<img src="https://cdn.dribbble.com/users/207059/screenshots/16573461/media/f154d82ff06254c9d49bd8ddda1db06f.gif" alt="car servicing" width="450" height="300"/>
 
 Build a CRUD for the Service Microservice using the following URLs.
 | Action | Method | URL
@@ -189,7 +189,7 @@ To create a Technician, here is an example of a JSON body to send:
 
 ## Sales Microservice CRUD
 
-<img src="https://suitecrm.com/wp-content/uploads/2019/08/graph.gif" alt="sales chart"/>
+<img src="https://i.pinimg.com/originals/4f/c6/40/4fc640bbb3667abc13806a5fcd6cdaf1.jpg" alt="sales chart" width="400" height="300"/>
 
 ### Customers CRUD
 | Action | Method | URL
