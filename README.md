@@ -137,8 +137,11 @@ Build a CRUD for the Service Microservice using the following URLs.
 |Set appointment status to "finished"|PUT|http://localhost:8080/api/appointments/:id/finish/
 |AutomobileVO List (for poll testing)|GET|http://localhost:8080/api/automobilesVO/
 
-##### Create Appointment Example:
-``````
+<details>
+<summary markdown="span">Create Appointment Example</summary>
+To create an appointment, here is an example of a JSON body to send:
+
+```
 {
 	"date_time" : "2023-7-28 10:30",
 	"reason" : "full repair",
@@ -147,25 +150,44 @@ Build a CRUD for the Service Microservice using the following URLs.
 	"customer": "Mike Ike",
 	"technician" : "ffelix"
 }
-``````
-##### Update to Cancel Appointment Example:
+```
+</details>
+
+<details>
+<summary markdown="span">Update to Cancel Appointment Example</summary>
+After selecting which appointment to cancel by putting the appointment ID in the URL, here's an example of the JSON body to input:
+
 ```
 { "status" : "canceled" }
 ```
-##### Update to Finish Appointment Example:
-``````
+</details>
+
+<details>
+<summary markdown="span">Update to Finish Appointment Example</summary>
+After selecting which appointment to complete by putting the appointment ID in the URL, here's an example of the JSON body to input:
+
+```
 { "status" : "finished" }
-``````
-##### Create a Technician Example:
-``````
+```
+</details>
+
+<details>
+<summary markdown="span">Create a Technician Example</summary>
+To create a Technician, here is an example of a JSON body to send:
+
+```
 {
 	"first_name" : "Fixit",
 	"last_name" : "Felix",
 	"employee_id" : "ffelix"
 }
-``````
+```
+</details>
+
 ---
+
 ## Sales Microservice CRUD
+
 ### Customers CRUD
 | Action | Method | URL
 | - | - | - |
