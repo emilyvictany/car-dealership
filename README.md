@@ -42,15 +42,15 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
 ## Getting Started
 *for this project we used git, Docker, and Insomnia*
 
-* Fork from repository at https://gitlab.com/bmlx23/project-beta
-* Setup gitlab if you need to add members
-* Clone with ***git clone*** to your local computer
+* Fork from repository at https://gitlab.com/emilyvictany/car-dealership
+* Setup Gitlab if you need to add members
+* Clone with `git clone` to your local computer
     * Use HTTPS if SSH has not been set up
-	* after cloning, we used *code .* to open project in **VS Code**
+	* after cloning, we used `code .` to open project in **VS Code**
 * Run the following commands in **Docker** on your computer
-    1. *docker volume create beta-data*
-    2.  *docker-compose build*
-    3.  *docker-compose up*
+    1. `docker volume create beta-data`
+    2.  `docker-compose build`
+    3.  `docker-compose up`
 
 ---
 ## Inventory Monolith CRUD
@@ -155,7 +155,7 @@ To create an appointment, here is an example of a JSON body to send:
 
 <details>
 <summary markdown="span">Update to Cancel Appointment Example</summary>
-After selecting which appointment to cancel by putting the appointment ID in the URL, here's an example of the JSON body to input:
+After selecting which appointment to cancel by putting the appointment ID in the URL, the successful response should look like this:
 
 ```
 { "status" : "canceled" }
@@ -164,7 +164,7 @@ After selecting which appointment to cancel by putting the appointment ID in the
 
 <details>
 <summary markdown="span">Update to Finish Appointment Example</summary>
-After selecting which appointment to complete by putting the appointment ID in the URL, here's an example of the JSON body to input:
+After selecting which appointment to complete by putting the appointment ID in the URL, the successful response should look like this:
 
 ```
 { "status" : "finished" }
