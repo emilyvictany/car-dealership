@@ -173,8 +173,10 @@ Build a CRUD for the Service Microservice using the following URLs.
 | List customers | GET | http://localhost:8090/api/customers/
 | Delete a customer | DELETE | http://localhost:8090/api/customers/id/
 
-##### Creating a customer:
+<details>
+<summary markdown="span">Creating a customer</summary>
 To create a customer, here is an example of a JSON body to send:
+
 ```
 {
     "first_name": "London",
@@ -193,8 +195,12 @@ and the response should look like this:
 	"phone_number": "415-554-4000"
 }
 ```
-##### Listing all customers:
+</details>
+
+<details>
+<summary markdown="span">Listing all customers</summary>
 After sending a GET request to list all customer, the return value should look something like this:
+
 ```
 {
 	"customers": [
@@ -222,13 +228,19 @@ After sending a GET request to list all customer, the return value should look s
 	]
 }
 ```
-##### Deleting a customer:
+</details>
+
+<details>
+<summary markdown="span">Deleting a customer</summary>
 After selecting which customer to delete by putting the customer ID in the URL, the successful response should look like this:
+
 ```
 {
   "deleted": true
 }
 ```
+</details>
+
 ### Salesperson CRUD
 | Action | Method | URL
 | - | - | - |
@@ -236,8 +248,10 @@ After selecting which customer to delete by putting the customer ID in the URL, 
 | List all salespeople | GET | http://localhost:8090/api/salespeople/
 | Delete a salesperson | DELETE | http://localhost:8090/api/salesperson/id/
 
-##### Creating a salesperson:
+<details>
+<summary markdown="span">Creating a salesperson:</summary>
 To create a salesperson, here is an example of a JSON body to send:
+
 ```
 {
     "first_name": "Shay",
@@ -254,8 +268,12 @@ and the response should look like this:
 	"employee_id": "SMitchell"
 }
 ```
-##### Listing all salespeople:
+</details>
+
+<details>
+<summary markdown="span">Listing all salespeople</summary>
 After sending a GET request to list all salespeople, the return value should look something like this:
+
 ```
 {
     "salespeople": [
@@ -280,13 +298,19 @@ After sending a GET request to list all salespeople, the return value should loo
 	]
 }
 ```
-##### Deleting a salesperson:
+</details>
+
+<details>
+<summary markdown="span">Deleting a salesperson</summary>
 After selecting which salesperson to delete by putting the salesperson's ID in the URL, the successful response should look like this:
+
 ```
 {
     "deleted": true
 }
 ```
+</details>
+
 ### Sales CRUD
 
 | Action | Method | URL
@@ -295,12 +319,15 @@ After selecting which salesperson to delete by putting the salesperson's ID in t
 | List all sales | GET | http://localhost:8090/api/sales/
 | Delete a sale | DELETE | http://localhost:8090/api/sales/id/
 
-##### Creating a sale:
+<details>
+<summary markdown="span">Creating a sale</summary>
+
 To create a sale, we use the automobile's VIN for the automobile, the employee's ID for the salesperson, and the customer's ID for customer.
 
 After every successful sale, a PUT request is sent to the Inventory microservice to update an automobile's sold status. This integration ensures that a salesperson cannot list a car that has already been sold.
 
 Here is an example of a JSON body to send:
+
 ```
 {
     "price": "32456",
@@ -333,8 +360,12 @@ and the response should look like this:
 	}
 }
 ```
-##### Listing all sales:
+</details>
+
+<details>
+<summary markdown="span">Listing all sales</summary>
 After sending a GET request to list all sales, the return value should look something like this:
+
 ```
 {
 	"sales": [
@@ -383,10 +414,15 @@ After sending a GET request to list all sales, the return value should look some
 	]
 }
 ```
-##### Deleting a salesperson:
+</details>
+
+<details>
+<summary markdown="span">Deleting a salesperson</summary>
 After selecting which sale to delete by putting the sale ID in the URL, the successful response should look like this:
+
 ```
 {
   "deleted": true
 }
 ```
+</details>

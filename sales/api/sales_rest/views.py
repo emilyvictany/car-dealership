@@ -131,7 +131,6 @@ def api_customer(request, id=None):
                 )
 
 
-
 @require_http_methods(["GET", "POST", "DELETE"])
 def api_sales(request, id=None):
     if id is None:
