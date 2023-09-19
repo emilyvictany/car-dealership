@@ -37,7 +37,6 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
 * Sale: price, automobile, salesperson, and customer. Created a special feature to ensure that only automobiles that have not been sold are available to sell.
 * AutomobileVO: works with the poller to pole the VIN and sold status. This is what makes the special feature possible
 
----
 
 ## Getting Started
 *for this project we used git, Docker, and Insomnia*
@@ -122,8 +121,11 @@ CRUD will be listed in the following structure:
   "sold": true
 }
 ``````
----
+
 ## Service Microservice CRUD:
+
+<img src="https://cdn.dribbble.com/users/207059/screenshots/16573461/media/f154d82ff06254c9d49bd8ddda1db06f.gif" alt="car servicing"/>
+
 Build a CRUD for the Service Microservice using the following URLs.
 | Action | Method | URL
 | ----------- | ----------- | -----------|
@@ -184,9 +186,10 @@ To create a Technician, here is an example of a JSON body to send:
 ```
 </details>
 
----
 
 ## Sales Microservice CRUD
+
+<img src="https://suitecrm.com/wp-content/uploads/2019/08/graph.gif" alt="sales chart"/>
 
 ### Customers CRUD
 | Action | Method | URL
