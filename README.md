@@ -36,7 +36,7 @@ On the backend, I created models for Salesperson, Customer, Sale, and Automobile
 * Salesperson: first name, last name, and employee ID
 * Customer: first name, last name, address, and phone number
 * Sale: price, automobile, salesperson, and customer. Created a special feature to ensure that only automobiles that have not been sold are available to sell.
-* AutomobileVO: works with the poller to pole the VIN and sold status. This is what makes the special feature possible
+* AutomobileVO: works with the poller to poll the VIN and sold status. This is what makes the special feature possible
 
 
 ## Getting Started
