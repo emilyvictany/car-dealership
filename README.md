@@ -30,7 +30,7 @@ Purpose of this microservice is to keep track of service appointments for automo
 
 The purpose of this microservice is to keep track of automobile sales that come from the inventory. A salesperson cannot sell a car that isn't list in the inventory, nor can they sell a car that has already been sold.
 
-On the backend, I created models for Salesperson, Customer, Sale, and Automobile VO. Implemented a poller to pole automobile data from the inventory. Created React components on the frontend allowing user to add a Salesperson, list all Salespeople, add a Customer, list all Customers, add a new Sale, list all Sales, and view a salesperson's sale history.
+On the backend, I created models for Salesperson, Customer, Sale, and Automobile VO. Implemented a poller to poll automobile data from the inventory. Created React components on the frontend allowing user to add a Salesperson, list all Salespeople, add a Customer, list all Customers, add a new Sale, list all Sales, and view a salesperson's sale history.
 
 ##### Models:
 * Salesperson: first name, last name, and employee ID
