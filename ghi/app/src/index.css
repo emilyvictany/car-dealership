@@ -20,3 +20,8 @@ img {
   width: 400px;
   height: 225px;
 }
+
+.menu {
+  flex-direction: column;
+  width: auto;
+}
