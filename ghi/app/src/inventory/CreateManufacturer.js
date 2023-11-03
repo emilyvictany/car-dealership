@@ -48,7 +48,7 @@ function ManufacturerForm() {
                                 />
                                 <label htmlFor="name">Manufacturer Name</label>
                             </div>
-                            <div><button className="btn btn-outline btn-accent">Create</button></div>
+                            <center><div><button type="button" class="btn btn-outline-success btn-lg">Create</button></div></center>
                         </form>
                     </div>
                 </div>

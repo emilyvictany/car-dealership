@@ -4,8 +4,7 @@ import React from "react"
 function Nav() {
   return (
     <div>
-    {/* remove "expand" for it to be a hamburger menu at all times */}
-      <nav className="navbar navbar-start navbar-expand-lg bg-success">
+      <nav className="navbar navbar-start navbar-expand-lg navbar-dark" style={{ backgroundImage: "linear-gradient(140deg, #AB400C 0%, #ED8B16 50%, #E8E0D1 75%)" }}>
         <div className="container-fluid flex-1" >
           <NavLink className="navbar-brand btn btn-ghost normal-case text-xl" to="/">Sunset Motors</NavLink>
         </div>
