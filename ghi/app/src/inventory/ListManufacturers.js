@@ -6,7 +6,6 @@ function ManufacturersList() {
 
     const getData = async () => {
         const response = await fetch("http://localhost:8100/api/manufacturers/")
-
         if (response.ok) {
             const data = await response.json()
             setList(data.manufacturers)
@@ -19,26 +18,26 @@ function ManufacturersList() {
 
     return (
         <>
-        <br />
-        <h1>Manufacturers</h1>
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
+            <br />
+            <h1>Manufacturers</h1>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {list?.map(manufacturers => {
-                    return (
-                    <tr key={ manufacturers.id }>
-                        <td>{ manufacturers.name }</td>
-                    </tr>
-                    );
-                })}
-            </tbody>
-        </table>
+                        return (
+                            <tr key={ manufacturers.id }>
+                                <td>{ manufacturers.name }</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </>
-        )
-        }
+    )
+}
 
 export default ManufacturersList;

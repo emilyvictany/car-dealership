@@ -41,7 +41,6 @@ function ModelForm() {
         data.picture_url = pictureUrl;
         data.manufacturer_id = manufacturer;
         // console.log(data);
-
         const modelsUrl = `http://localhost:8100/api/models/`;
         const fetchOptions = {
             method: 'post',
@@ -62,38 +61,39 @@ function ModelForm() {
     }
 
     return (
-        <div className="container">
-        <div className="row">
-        <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+        <div className="container row offset-3 col-6 shadow p-4 mt-4">
             <h1>Create a vehicle model</h1>
-            <form onSubmit={handleSubmit} id="create-model-form">
+            <form onSubmit={ handleSubmit } id="create-model-form">
                 <div className="form-floating mb-3">
-                    <input onChange={handleChangeName} value={name} placeholder="Model Name" required type="text" id="name" name="name" className="form-control"/>
+                    <input onChange={ handleChangeName } value={ name } placeholder="Model Name" required type="text" id="name" name="name" className="form-control"/>
                     <label htmlFor="name">Model Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input onChange={handleChangePictureUrl} value={pictureUrl} placeholder="Picture URL" required type="text" id="picture_url" name="picture_url" className="form-control"/>
+                    <input
+                        onChange={ handleChangePictureUrl }
+                        value={ pictureUrl }
+                        placeholder="Picture URL"
+                        required type="text"
+                        id="picture_url"
+                        name="picture_url"
+                        className="form-control"
+                    />
                     <label htmlFor="picture_url">Picture URL</label>
                 </div>
-
                 <div className="mb-3">
                     <label htmlFor="manufacturer" className="form-label">Manufacturer</label>
-                    <select required onChange={handleChangeManufacturer} value={manufacturer} id="manufacturer_id" name="manufacturer_id" className="form-select">
+                    <select required onChange={ handleChangeManufacturer } value={ manufacturer } id="manufacturer_id" name="manufacturer_id" className="form-select">
                         <option>Choose a manufacturer</option>
-                        {manufacturers.map(manufacturer => {
+                        { manufacturers.map(manufacturer => {
                             return (
-                                <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
+                                <option key={ manufacturer.id } value={ manufacturer.id }>{ manufacturer.name }</option>
                             );
                         })}
                     </select>
                 </div>
                 <button className="btn btn-primary">Create</button>
             </form>
-            </div>
         </div>
-        </div>
-    </div>
     );
 }
 

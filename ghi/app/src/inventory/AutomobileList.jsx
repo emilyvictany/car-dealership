@@ -7,7 +7,6 @@ const AutomobileList = () => {
     const [autos, setAutos] = useState([]);
     const fetchData = async () => {
         const autosUrl = `http://localhost:8100/api/automobiles/`;
-
         try {
             const autosResponse = await fetch(autosUrl);
             if (autosResponse.ok) {
@@ -54,7 +53,6 @@ const AutomobileList = () => {
                 </tbody>
             </table>
         </div>
-
     );
 }
 

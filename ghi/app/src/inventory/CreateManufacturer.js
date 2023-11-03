@@ -22,7 +22,9 @@ function ManufacturerForm() {
             "Content-Type": "application/json"
         }
     }
+
     const manufacturer = await fetch(url, fetchConfig)
+
     if (manufacturer.ok) {
         const newManufacturer = await manufacturer.json()
         setName('')
@@ -30,32 +32,25 @@ function ManufacturerForm() {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="offset-3 col-6">
-                    <div className="shadow p-4 mt-4">
-                        <center><h1>Create a Manufacturer</h1></center>
-                        <form onSubmit={ handleSubmit } id="add-manufacturer">
-                            <div className="form-floating mb-3">
-                                <input
-                                onChange={ handleNameChange }
-                                value={name}
-                                placeholder="Manufacturer Name"
-                                required type="text"
-                                name="name"
-                                id="name"
-                                className="form-control"
-                                />
-                                <label htmlFor="name">Manufacturer Name</label>
-                            </div>
-                            <center><div><button type="button" class="btn btn-outline-success btn-lg">Create</button></div></center>
-                        </form>
-                    </div>
+        <div className="container row offset-3 col-6 shadow p-4 mt-4">
+            <center><h1>Create a Manufacturer</h1></center>
+            <form onSubmit={ handleSubmit } id="add-manufacturer">
+                <div className="form-floating mb-3">
+                    <input
+                        onChange={ handleNameChange }
+                        value={name}
+                        placeholder="Manufacturer Name"
+                        required type="text"
+                        name="name"
+                        id="name"
+                        className="form-control"
+                    />
+                    <label htmlFor="name">Manufacturer Name</label>
                 </div>
-            </div>
+                <center><div><button type="button" class="btn btn-outline-success btn-lg">Create</button></div></center>
+            </form>
         </div>
     )
 }
-
 
 export default ManufacturerForm;

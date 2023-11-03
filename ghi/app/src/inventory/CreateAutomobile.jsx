@@ -5,14 +5,14 @@ function AutomobileForm() {
     const [year, setYear] = useState('');
     const [vin, setVin] = useState('');
     const [models, setModels] = useState([]);
-    const [model, setModel] = useState(0); //value should be it's id which is an integer
+    const [model, setModel] = useState(0); // value should be it's id which is an integer
 
     const fetchData = async () => {
         const url = 'http://localhost:8100/api/models/';
         const response = await fetch(url);
         if (response.ok) {
-          const data = await response.json();
-          setModels(data.models);
+            const data = await response.json();
+            setModels(data.models);
         }
     }
 
@@ -48,7 +48,6 @@ function AutomobileForm() {
         data.vin = vin;
         data.model_id = model;
         // console.log(data);
-
         const autosUrl = `http://localhost:8100/api/automobiles/`;
         const fetchOptions = {
             method: 'post',
@@ -70,10 +69,7 @@ function AutomobileForm() {
     }
 
     return (
-        <div className="container">
-        <div className="row">
-        <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+        <div className="container row offset-3 col-6 shadow p-4 mt-4">
             <h1>Add an automobile to inventory</h1>
             <form onSubmit={handleSubmit} id="create-automobile-form">
                 <div className="form-floating mb-3">
@@ -88,7 +84,6 @@ function AutomobileForm() {
                     <input onChange={handleChangeVin} value={vin} placeholder="VIN" required type="text" id="vin" name="vin" className="form-control"/>
                     <label htmlFor="vin">VIN</label>
                 </div>
-
                 <div className="mb-3">
                     <label htmlFor="model" className="form-label">Model</label>
                     <select required onChange={handleChangeModel} value={model} id="model_id" name="model_id" className="form-select">
@@ -102,10 +97,7 @@ function AutomobileForm() {
                 </div>
                 <button className="btn btn-primary">Create</button>
             </form>
-          </div>
         </div>
-      </div>
-    </div>
     );
 }
 
