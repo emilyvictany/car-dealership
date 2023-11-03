@@ -16,8 +16,8 @@ const AppointmentForm = () => {
         const url = 'http://localhost:8080/api/technicians/';
         const response = await fetch(url);
         if (response.ok) {
-          const data = await response.json();
-          setTechnicians(data.technicians);
+            const data = await response.json();
+            setTechnicians(data.technicians);
         }
     }
 
@@ -89,10 +89,7 @@ const AppointmentForm = () => {
     }
 
     return (
-        <div className="container">
-      <div className="row">
-        <div className="offset-3 col-6">
-          <div className="shadow p-4 mt-4">
+        <div className="container row offset-3 col-6 shadow p-4 mt-4">
             <h1>Create an Appointment</h1>
             <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
@@ -103,7 +100,6 @@ const AppointmentForm = () => {
                     <input onChange={handleChangeTime} value={time} placeholder="Time" required type="time" id="time" name="time" className="form-control"/>
                     <label htmlFor="time">Time</label>
                 </div>
-
                 <div className="form-floating mb-3">
                     <input onChange={handleChangeReason} value={reason} placeholder="Reason" required type="text" id="reason" name="reason" className="form-control"/>
                     <label htmlFor="reason">Reason</label>
@@ -116,7 +112,6 @@ const AppointmentForm = () => {
                     <input onChange={handleChangeCustomer} value={customer} placeholder="Customer" required type="text" id="customer" name="customer" className="form-control"/>
                     <label htmlFor="customer">Customer</label>
                 </div>
-
                 <div className="mb-3">
                     <label htmlFor="model" className="form-label">Technician</label>
                     <select required onChange={handleChangeTechnician} value={technician} id="technician" name="technician" className="form-select">
@@ -131,10 +126,7 @@ const AppointmentForm = () => {
                 </div>
                 <button className="btn btn-primary">Create</button>
             </form>
-          </div>
         </div>
-      </div>
-    </div>
     );
 }
 

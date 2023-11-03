@@ -50,10 +50,7 @@ const TechnicianForm = () => {
     }
 
     return (
-        <div className="container">
-        <div className="row">
-        <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
+        <div className="container row offset-3 col-6 shadow p-4 mt-4">
             <h1>Create a Technician</h1>
             <form onSubmit={handleSubmit} id="create-technician-form">
                 <div className="form-floating mb-3">
@@ -70,10 +67,7 @@ const TechnicianForm = () => {
                 </div>
                 <button className="btn btn-primary">Create</button>
             </form>
-            </div>
         </div>
-        </div>
-    </div>
     );
 }
 

@@ -4,9 +4,9 @@ import '../index.css'
 
 const TechnicianList = () => {
     const [techs, setTechs] = useState([]);
+
     const fetchData = async () => {
         const techUrl = `http://localhost:8080/api/technicians/`;
-
         try {
             const techsResponse = await fetch(techUrl);
             if (techsResponse.ok) {
@@ -47,7 +47,6 @@ const TechnicianList = () => {
                 </tbody>
             </table>
         </div>
-
     );
 }
 

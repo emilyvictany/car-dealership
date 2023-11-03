@@ -5,10 +5,9 @@ import '../index.css'
 const AppointmentHistory = () => {
     const [appointments, setAppointments] = useState([]);
     const [search, setSearch] = useState('');
+
     const fetchData = async () => {
-
         const appUrl = `http://localhost:8080/api/appointments/`;
-
         try {
             const appResponse = await fetch(appUrl);
             if (appResponse.ok) {
@@ -20,7 +19,6 @@ const AppointmentHistory = () => {
         } catch (e) {
             console.error(e)
         }
-
     }
 
     useEffect(() => {
@@ -49,7 +47,7 @@ const AppointmentHistory = () => {
         <h1>Service History</h1>
         <div>
             <input onChange={handleChangeSearch} value={search} placeholder="Search" required type="search" id="search" name="search" className="form-control" />
-                <button className='search' type='button' onClick={() => handleSearch(search)}> Search </button>
+            <button className='search' type='button' onClick={() => handleSearch(search)}> Search </button>
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -60,7 +58,7 @@ const AppointmentHistory = () => {
                         <th>Time</th>
                         <th>Technician</th>
                         <th>Reason</th>
-                        <th>Satus</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,16 +78,16 @@ const AppointmentHistory = () => {
                         // console.log(time)
 
                         return (
-                        <tr key = { appointment.id }>
-                            <td>{ appointment.vin }</td>
-                            <td>{ appointment.vipVIN ? "Yes" : "No" }</td>
-                            <td>{ appointment.customer }</td>
-                            <td>{ date } </td>
-                            <td>{ time }</td>
-                            <td>{ appointment.technician.first_name + ' ' + appointment.technician.last_name }</td>
-                            <td>{ appointment.reason }</td>
-                            <td>{ appointment.status }</td>
-                        </tr>
+                            <tr key = { appointment.id }>
+                                <td>{ appointment.vin }</td>
+                                <td>{ appointment.vipVIN ? "Yes" : "No" }</td>
+                                <td>{ appointment.customer }</td>
+                                <td>{ date } </td>
+                                <td>{ time }</td>
+                                <td>{ appointment.technician.first_name + ' ' + appointment.technician.last_name }</td>
+                                <td>{ appointment.reason }</td>
+                                <td>{ appointment.status }</td>
+                            </tr>
                         );
                     })}
                 </tbody>
