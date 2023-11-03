@@ -19,8 +19,8 @@ function SalesList() {
 
     return (
     <>
-    <br />
-    <h1>Sales</h1>
+        <br />
+        <h1>Sales</h1>
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -32,17 +32,17 @@ function SalesList() {
                 </tr>
             </thead>
             <tbody>
-            { salesData?.map(sales => {
-                return (
-                <tr key={ sales.id }>
-                    <td>{ sales.salesperson.first_name } { sales.salesperson.last_name }</td>
-                    <td>{ sales.salesperson.employee_id }</td>
-                    <td>{ sales.customer.first_name } { sales.customer.last_name }</td>
-                    <td>{ sales.automobile.vin }</td>
-                    <td>${ sales.price.toFixed(2) }</td> 
-                </tr>
-                )
-            })}
+                { salesData?.map(sales => {
+                    return (
+                        <tr key={ sales.id }>
+                            <td>{ sales.salesperson.first_name } { sales.salesperson.last_name }</td>
+                            <td>{ sales.salesperson.employee_id }</td>
+                            <td>{ sales.customer.first_name } { sales.customer.last_name }</td>
+                            <td>{ sales.automobile.vin }</td>
+                            <td>${ sales.price.toFixed(2) }</td>
+                        </tr>
+                    )
+                })}
             </tbody>
         </table>
     </>

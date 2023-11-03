@@ -32,17 +32,17 @@ function SaleForm() {
             setCustomers(data.customers)
         } else {
             console.error(response)
-            }
+        }
     }
 
     async function loadSalespeople() {
-    const response = await fetch("http://localhost:8090/api/salespeople/")
-    // console.log(response)
-    if (response.ok) {
-        const data = await response.json()
-        setSalespeople(data.salespeople)
-    } else {
-        console.error(response)
+        const response = await fetch("http://localhost:8090/api/salespeople/")
+        // console.log(response)
+        if (response.ok) {
+            const data = await response.json()
+            setSalespeople(data.salespeople)
+        } else {
+            console.error(response)
         }
     }
 
@@ -54,7 +54,6 @@ function SaleForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
         const data = {}
 
         data.price = price
@@ -100,7 +99,6 @@ function SaleForm() {
             setPrice('')
         }
     }
-
 
     const handlePriceChange = (event) => {
     const value = event.target.value
@@ -148,54 +146,48 @@ function SaleForm() {
         // getCustomers();
     }, []);
 
-
-
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <center><h1>Record a New Sale</h1></center>
-                    <form onSubmit={ handleSubmit } id="create-sale-form">
-                        <div className="form-floating mb-3">
-                            <select onChange={ handleVinChange } value={vin} placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
-                                <option value="">Choose an Automobile VIN</option>
-                                {vins?.map(auto => {
-                                    return (
-                                    <option key={auto.vin} value={auto.vin}>{auto.vin}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={ handleSalespersonChange } value={salesperson} placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
-                                <option value="">Choose a Salesperson</option>
-                                {salespeople?.map(salespeople => {
-                                    return (
-                                        <option key={salespeople.id} value={salespeople.employee_id}>{salespeople.first_name} {salespeople.last_name}</option>
-                                        )
-                                })}
-                            </select>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={handleCustomerChange} value={customer} placeholder="Customer" type="text" name="customer" id="customer" className="form-select">
-                                <option value="">Choose a Customer</option>
-                                {customers?.map(customer => {
-                                    return (
-                                        <option key={customer.id} value={customer.id}>
-                                            {customer.first_name} {customer.last_name}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input value={price} onChange={handlePriceChange} required placeholder="Price" type="text" min="0" name="price" id="price" className="form-control" />
-                            <label htmlFor="price">Price</label>
-                        </div>
-                        <center><button className="btn btn-primary">Create</button></center>
-                    </form>
+        <div className="row offset-3 col-6 shadow p-4 mt-4">
+            <center><h1>Record a New Sale</h1></center>
+            <form onSubmit={ handleSubmit } id="create-sale-form">
+                <div className="form-floating mb-3">
+                    <select onChange={ handleVinChange } value={vin} placeholder="Automobile VIN" type="text" name="automobile" id="automobile" className="form-select">
+                        <option value="">Choose an Automobile VIN</option>
+                        {vins?.map(auto => {
+                            return (
+                                <option key={ auto.vin } value={ auto.vin }>{ auto.vin }</option>
+                            )
+                        })}
+                    </select>
                 </div>
-            </div>
+                <div className="form-floating mb-3">
+                    <select onChange={ handleSalespersonChange } value={salesperson} placeholder="salesperson" type="text" name="salesperson" id="salesperson" className="form-select">
+                        <option value="">Choose a Salesperson</option>
+                        {salespeople?.map(salespeople => {
+                            return (
+                                <option key={ salespeople.id } value={ salespeople.employee_id }>{ salespeople.first_name } { salespeople.last_name }</option>
+                            )
+                        })}
+                    </select>
+                </div>
+                <div className="form-floating mb-3">
+                    <select onChange={handleCustomerChange} value={customer} placeholder="Customer" type="text" name="customer" id="customer" className="form-select">
+                        <option value="">Choose a Customer</option>
+                        {customers?.map(customer => {
+                            return (
+                                <option key={ customer.id } value={ customer.id }>
+                                    { customer.first_name } { customer.last_name }
+                                </option>
+                            )
+                        })}
+                    </select>
+                </div>
+                <div className="form-floating mb-3">
+                    <input value={price} onChange={ handlePriceChange } required placeholder="Price" type="text" min="0" name="price" id="price" className="form-control" />
+                    <label htmlFor="price">Price</label>
+                </div>
+                <center><button className="btn btn-primary">Create</button></center>
+            </form>
         </div>
     )
 }

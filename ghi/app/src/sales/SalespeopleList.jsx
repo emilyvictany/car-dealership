@@ -19,30 +19,29 @@ function SalespeopleList() {
 
     return (
         <>
-        <br />
-        <h1>Salespeople</h1>
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Employee ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                { salespeople?.map(salespeople => {
-                    return (
-                        <tr key={ salespeople.employee_id }>
-                            <td>{ salespeople.first_name }</td>
-                            <td>{ salespeople.last_name }</td>
-                            <td>{ salespeople.employee_id }</td>
-                        </tr>
+            <br />
+            <h1>Salespeople</h1>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Employee ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { salespeople?.map(salespeople => {
+                        return (
+                            <tr key={ salespeople.employee_id }>
+                                <td>{ salespeople.first_name }</td>
+                                <td>{ salespeople.last_name }</td>
+                                <td>{ salespeople.employee_id }</td>
+                            </tr>
                         )
                     })}
-            </tbody>
-        </table>
-    </>
-
+                </tbody>
+            </table>
+        </>
     )
 }
 
