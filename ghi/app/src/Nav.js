@@ -5,18 +5,18 @@ function Nav() {
   return (
     <div>
     {/* remove "expand" for it to be a hamburger menu at all times */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <nav className="navbar navbar-start navbar-expand-lg bg-success">
         <div className="container-fluid flex-1" >
-          <NavLink className="navbar-brand btn btn-ghost normal-case text-xl" to="/">CarCar</NavLink>
+          <NavLink className="navbar-brand btn btn-ghost normal-case text-xl" to="/">Sunset Motors</NavLink>
         </div>
-        <div className="collapse navbar-collapse justify-content-center">
+        <div className="collapse navbar-collapse justify-content-center" >
 
           <div className="dropdown">
-            <details className="flex-col space-y-2">
+            <details className="dropdown">
               <summary className="m-1 btn">
                 Cars
               </summary>
-              <div className="navbar-nav me-auto mb-2 mb-lg-0 p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <div className="p-2 shadow menu-vertical bg-base-100 rounded-box w-52">
                 <div><NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink></div>
                 <div><NavLink className="nav-link" to="/manufacturer/create">Create a Manufacturer</NavLink></div>
                 <div><NavLink className="nav-link" to="/models">Models</NavLink></div>
@@ -32,7 +32,7 @@ function Nav() {
               <summary className="m-1 btn">
                 Sales
               </summary>
-              <div className="navbar-nav me-auto mb-2 mb-lg-0 p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <div className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                 <div><NavLink className="nav-link" to="/customer/create">Add a Customer</NavLink></div>
                 <div><NavLink className="nav-link" to="/customers">Customers</NavLink></div>
                 <div><NavLink className="nav-link" to="/sale/create">Record a New Sale</NavLink></div>
@@ -45,11 +45,11 @@ function Nav() {
           </div>
 
           <div className="dropdown">
-            <details className="flex-col space-y-2">
+            <details className="dropdown menu">
               <summary className="m-1 btn">
                 Services
               </summary>
-              <div className="navbar-nav me-auto mb-2 mb-lg-0 p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <div className="menu flex-col space-y-2 dropdown-content z-[1] bg-base-100 rounded-box w-52">
                 <div><NavLink className="nav-link" to="/appointment/new">Create Appointment</NavLink></div>
                 <div><NavLink className="nav-link" to="/appointments">Service Appointments</NavLink></div>
                 <div><NavLink className="nav-link" to="/appointments/history">Service History</NavLink></div>
