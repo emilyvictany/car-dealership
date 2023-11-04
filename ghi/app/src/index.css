@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,7 +17,7 @@ img {
   height: 225px;
 }
 
-/* .menu {
-  flex-direction: column;
-  width: auto;
-} */
+
+.dropdown-link {
+  color: black !important;
+}
